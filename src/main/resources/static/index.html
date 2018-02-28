@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    
+	    <title>Tom-Chat</title>
+	    
+	    <link href="/main.css" rel="stylesheet">
+	    <link href="/webjars/bootstrap/4.0.0-1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/webjars/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+	    <script src="/webjars/jquery/jquery.min.js"></script>
+	    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	    <script src="/app.js"></script>
+	
+	</head>
+	
+	<body>
+		
+		<noscript>
+			<h2 style="color: #ff0000">
+				It seems your browser doesn't support Javascript! This application relies on Javascript being enabled. 
+				Please enable Javascript and reload this page!
+	    	</h2>
+	    </noscript>
+		
+		<div id="main-content" class="container">
+		
+			<!-- Connectivity indicator stuff -->
+		    <div class="row container-fluid">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<div class="input-group-text">Connection:</div>
+					</div>
+		        	<span class="form-control" id="connection_status"></span>
+		        	<div class="input-group-append">
+		        		<button id="connect"	class="btn btn-success"	type="submit"><i class="fa fa-check"></i></button>
+		                <button id="disconnect"	class="btn btn-danger"	type="submit" disabled="disabled"><i class="fa fa-close"></i></button>
+		        	</div>
+				</div>		         
+		    </div>
+		    
+		    <hr>
+		    
+		    <!-- Chat window stuff -->
+			<div class="row">			
+		        <div class="container-fluid pre-scrollable" id="chat_container" style="padding: 0;">
+		            <table id="chat" class="table table-striped" style="white-space: pre-wrap;">
+		            	<thead></thead>
+		            	<tbody id="chat_messages"></tbody>
+		            </table>
+		        </div>
+		    </div>
+	
+			<hr>
+	
+		    <!-- Message window stuff -->
+		    <div class="row well well-sm form-inline">
+		    
+		    	<div class="input-group" style="width:100%;">
+	            	<textarea id="message_body"	class="form-control" disabled="disabled" placeholder="Type your message here..." style="resize: vertical;"></textarea>
+	            	<span class="input-group-append">
+	            		<button	id="send" class="btn btn-success btn-block" disabled="disabled">Send</button>
+	            	</span>
+	            </div>
+	            
+		    </div>
+		    
+		</div>
+	</body>
+</html>
