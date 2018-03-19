@@ -1,45 +1,89 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	    
-	    <title>Tom-Chat</title>
-	    
-	    <link href="/main.css" rel="stylesheet">
-	    <link href="/webjars/bootstrap/4.0.0-1/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/webjars/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+<!DOCTYPE HTML>
+<html lang="en">
 
-	    <script src="/webjars/jquery/jquery.min.js"></script>
-	    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-	    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-	    <script src="/app.js"></script>
-	
+	<head>
+		
+		<title>Tom's Demo Program</title>
+		
+		<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+		<link href="/webjars/font-awesome/5.0.6/on-server/css/fontawesome-all.min.css" rel="stylesheet">
+		
+		<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+		<script type="text/javascript" src="/webjars/sockjs-client/sockjs.min.js"></script>
+	    <script type="text/javascript" src="/webjars/stomp-websocket/stomp.min.js"></script>
+		<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/webjars/font-awesome/5.0.6/on-server/js/fontawesome-all.min.js"></script>
+		
+		<script type="text/javascript" src="/js/chat.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
+		<link href="/css/main.css" rel="stylesheet">
+		
 	</head>
 	
 	<body>
-		
+	
 		<noscript>
 			<h2 style="color: #ff0000">
 				It seems your browser doesn't support Javascript! This application relies on Javascript being enabled. 
 				Please enable Javascript and reload this page!
 	    	</h2>
 	    </noscript>
+
+		<div class="container">
+	
+			<!-- Navbar -->
+			<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			
+				<span class="navbar-brand mb-0 h1">
+					<a href="/" class="navbar-brand">
+						<i class="fas fa-comments fa-2x d-inline-block align-middle" style="margin-right: 10px;" data-fa-transform="flip-h"></i>Tom-Talk
+					</a>
+				</span>
+				
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav ml-auto">
+						
+						<!-- Login buttons -->
+						<li class="nav-item unauthenticated">
+							
+							<span class="align-middle" style="margin-right: 5px;">Login: </span> 
+							
+							<a href="/login/google" class="btn btn-light btn-outline-dark btn-circle">
+								<i class="fab fa-google fa-lg" style="color:#dd4b39;"></i>
+							</a>
+				
+							<a href="/login/facebook" class="btn btn-light btn-outline-dark btn-circle">
+								<i class="fab fa-facebook-f fa-lg" style="color:#3B5998;"></i>
+							</a>
+									
+							<a href="/login/twitter" class="btn btn-light btn-outline-dark btn-circle">
+								<i class="fab fa-twitter fa-lg" style="color:#00aced;"></i>
+							</a>
+									
+							<a href="/login/github" class="btn btn-light btn-outline-dark btn-circle">
+								<i class="fab fa-github fa-lg" style="color:Black;"></i>
+							</a>
+										
+						</li>
+						
+						<!-- Logout button -->
+						<li class="nav-item authenticated" style="display: none;">
+							<span id="user" class="align-middle"></span>
+							<button onClick="logout()" class="btn btn-outline-danger btn-circle" data-toggle="tooltip" data-placement="top" title="Logout">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+						
+					</ul>
+				</div>
+				
+			</nav>
+			
+		</div>
 		
 		<div id="main-content" class="container">
 		
-			<!-- Connectivity indicator stuff -->
-		    <div class="row container-fluid">
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<div class="input-group-text">Connection:</div>
-					</div>
-		        	<span class="form-control" id="connection_status"></span>
-		        	<div class="input-group-append">
-		        		<button id="connect"	class="btn btn-success"	type="submit"><i class="fa fa-check"></i></button>
-		                <button id="disconnect"	class="btn btn-danger"	type="submit" disabled="disabled"><i class="fa fa-close"></i></button>
-		        	</div>
-				</div>		         
-		    </div>
-		    
 		    <hr>
 		    
 		    <!-- Chat window stuff -->
@@ -60,12 +104,15 @@
 		    	<div class="input-group" style="width:100%;">
 	            	<textarea id="message_body"	class="form-control" disabled="disabled" placeholder="Type your message here..." style="resize: vertical;"></textarea>
 	            	<span class="input-group-append">
-	            		<button	id="send" class="btn btn-success btn-block" disabled="disabled">Send</button>
+	            		<button	id="send_btn" class="btn btn-success btn-block" disabled="disabled">Send</button>
 	            	</span>
 	            </div>
 	            
 		    </div>
 		    
 		</div>
+		
+	
 	</body>
+
 </html>
