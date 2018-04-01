@@ -39,9 +39,13 @@ function submit_message() {
 }
 
 function appendMessageToChat(message) {
-	
-	$("#chat_messages").append("<tr><td>" + message.body + "</td></tr>");
-	
+
+	$("#chat_messages").append("<li>" 
+		+ "<div>" + message.poster.name + ": </div>"
+		+ "<div>" + message.body + "</div>" 
+		+ "<div>" + new Date(new Number(message.datetime)).toString() + "</div>"
+		+ "</li>");
+
 	//Scroll to the bottom of the chat history on message sent.
 	$('#chat_container').scrollTop($('#chat_container').prop("scrollHeight"));
 

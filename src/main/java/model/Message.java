@@ -1,6 +1,6 @@
 package main.java.model;
 
-import java.security.Principal;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Message {
 	
@@ -16,7 +16,7 @@ public class Message {
 	/** Date/Time of message creation (Millis). */
 	private long datetime;
 	/** Name of message creator. */
-	private String poster;
+	private User poster;
 
 	/** Enum representing the type of message being sent. */
 	public enum MessageType {
@@ -29,7 +29,7 @@ public class Message {
 		setID(-1);
 		setBody("");
 		setMessageType(MessageType.CHAT);
-		setPoster("");
+		setPoster(null);
 		setDateTime();
 	}
 	
@@ -37,15 +37,15 @@ public class Message {
 		setID(-1);
 		setBody(body);
 		setMessageType(MessageType.CHAT);
-		setPoster("");
+		setPoster(null);
 		setDateTime();
 	}
 	
-	public Message(Message m, Principal p) {
+	public Message(Message m, User u) {
 		setID(m.id);
 		setBody(m.body);
 		setMessageType(m.type);
-		setPoster(p.getName());
+		setPoster(u);
 		setDateTime(m.datetime);	
 	}
 
@@ -57,7 +57,7 @@ public class Message {
 		this.body = body;
 	}
 	
-	private void setPoster(String poster) {
+	private void setPoster(User poster) {
 		this.poster = poster;
 	}
 	
@@ -73,22 +73,27 @@ public class Message {
 		this.type = type;
 	}
 	
+	@JsonProperty("id")
 	public long getID() {
 		return id;
 	}
 	
+	@JsonProperty("body")
 	public String getBody() {
 		return body;
 	}
 	
-	public String getPoster() {
+	@JsonProperty("poster")
+	public User getPoster() {
 		return poster;
 	}
 	
+	@JsonProperty("datetime")
 	public long getDateTime() {
 		return datetime;
 	}
 	
+	@JsonProperty("message_type")
 	public MessageType getMessageType() {
 		return type;
 	}

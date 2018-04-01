@@ -9,10 +9,10 @@ $.ajaxSetup({
 	}
 });
 	
-$.get("/user", function(data) {
+$.get("/user", function(user) {
 	
 	//Update app information
-	$("#user").html(data.userAuthentication.details.name);
+	$("#user").html(user.name);
 	$(".unauthenticated").hide();
 	$(".authenticated").show();
 	
