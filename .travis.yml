@@ -9,7 +9,6 @@ deploy:
   region: us-east-2
   app: Tom-Talk
   env: Tom-Talk-env
-  zip_file: "Tom-Talk.jar"
   bucket_name: "elasticbeanstalk-us-east-2-669693679044"
   on:
     repo: ThomGeG/Tom-Talk
