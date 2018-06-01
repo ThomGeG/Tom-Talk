@@ -26,7 +26,4 @@ spring:
       enabled: true
 
 server:
-  ssl:
-    key-store: classpath:cert.keystore
-    key-password: sslpassword
-    key-store-password: storepassword
+  port: 5000
