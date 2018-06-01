@@ -1,6 +1,8 @@
 language: java
 jdk:
 - oraclejdk8
+script:
+  - mvn clean package
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAI7SK5573GGSPOFNA
@@ -9,6 +11,7 @@ deploy:
   region: us-east-2
   app: Tom-Talk
   env: Tom-Talk-env
+  zip_file: "target/Tom-Talk-1.1.jar"
   bucket_name: "elasticbeanstalk-us-east-2-669693679044"
   on:
     repo: ThomGeG/Tom-Talk
