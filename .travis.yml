@@ -11,3 +11,4 @@ deploy:
   env: Tom-Talk-env
   on:
     repo: ThomGeG/Tom-Talk
+  skip_cleanup: true
